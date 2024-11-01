@@ -13,7 +13,16 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/sign-in">
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#2563EB",
+          fontSize: "16px",
+        },
+      }}
+      publishableKey={PUBLISHABLE_KEY}
+      afterSignOutUrl="/sign-in"
+    >
       <BrowserRouter>
         <App />
       </BrowserRouter>
