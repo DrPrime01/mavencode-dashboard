@@ -1,10 +1,5 @@
-import Home from "./pages/dashboard";
-import DashboardLayout from "./template/DashboardLayout";
+import AllRoutes from "./AllRoutes";
 
 export default function App() {
-  return (
-    <DashboardLayout>
-      <Home />
-    </DashboardLayout>
-  );
+  return <AllRoutes />;
 }

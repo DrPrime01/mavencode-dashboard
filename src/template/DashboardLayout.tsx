@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import {
   Box,
@@ -10,11 +10,7 @@ import {
   StickyNote,
 } from "lucide-react";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DashboardLayout() {
   return (
     <div className="w-full min-h-screen bg-[#f5f7fa] flex flex-col relative overflow-hidden">
       <div className="fixed top-0 left-0 w-full z-10">
@@ -39,7 +35,7 @@ export default function DashboardLayout({
       </div>
       <main className="flex flex-col w-full flex-grow mt-[124px]">
         <div className="sm:px-16 px-6 overflow-y-auto flex-grow overflow-x-hidden">
-          {children}
+          <Outlet />
         </div>
       </main>
     </div>
