@@ -2,9 +2,19 @@ import ChartCard, { ChartCard2 } from "@/components/ChartCard";
 import ChartContainerCard from "@/components/ChartContainerCard";
 import StatsCard from "@/components/StatsCard";
 import TableContainer from "@/components/TableContainer";
+import { useGetDashboardDataQuery } from "@/services/general.api";
 import { Link } from "react-router-dom";
 
 export default function Home() {
+  const { data, error, isLoading } = useGetDashboardDataQuery({});
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) {
+    console.error(error);
+    return <div className="my-8">Error loading dashboard data</div>;
+  }
+
+  const stats = data?.stats;
   return (
     <div className="flex flex-col my-8">
       <h2 className="text-3xl font-medium text-gray-500 mb-8">Dashboard</h2>
@@ -12,39 +22,39 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
           <StatsCard
             label="New Ticket"
-            value={43}
-            percentageVal="+6%"
-            isProfit
+            value={stats?.newTickets?.value}
+            percentageVal={stats?.newTickets?.change}
+            isProfit={stats?.newTickets?.isProfit}
           />
           <StatsCard
             label="Closed Today"
-            value={17}
-            percentageVal="-3%"
-            isProfit={false}
+            value={stats?.closedToday?.value}
+            percentageVal={stats?.closedToday?.change}
+            isProfit={stats?.closedToday?.isProfit}
           />
           <StatsCard
             label="New Replies"
-            value={7}
-            percentageVal="+9%"
-            isProfit
+            value={stats?.newReplies?.value}
+            percentageVal={stats?.newReplies?.change}
+            isProfit={stats?.newReplies?.isProfit}
           />
           <StatsCard
             label="Followers"
-            value="27.3k"
-            percentageVal="+3%"
-            isProfit
+            value={stats?.followers?.value}
+            percentageVal={stats?.followers?.change}
+            isProfit={stats?.followers?.isProfit}
           />
           <StatsCard
             label="Daily Earnings"
-            value="$95"
-            percentageVal="-2%"
-            isProfit={false}
+            value={stats?.dailyEarnings?.value}
+            percentageVal={stats?.dailyEarnings?.change}
+            isProfit={stats?.dailyEarnings?.isProfit}
           />
           <StatsCard
             label="Products"
-            value={621}
-            percentageVal="-1%"
-            isProfit={false}
+            value={stats?.products?.value}
+            percentageVal={stats?.products?.change}
+            isProfit={stats?.products?.isProfit}
           />
         </div>
         <div className="flex flex-col-reverse md:flex-row gap-6">
@@ -64,7 +74,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <TableContainer />
+              <TableContainer data={data?.developmentActivity} />
             </div>
           </div>
           <div className="flex-1 flex flex-col w-full">

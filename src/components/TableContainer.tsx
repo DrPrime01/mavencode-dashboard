@@ -10,7 +10,30 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Trash } from "lucide-react";
 
-export default function TableContainer() {
+type DataTypes = {
+  user: string;
+  commit: string;
+  date: string;
+  avatar: string;
+};
+
+export default function TableContainer({ data }: { data: DataTypes[] }) {
+  const tableData = data?.map((item) => ({
+    user: (
+      <div className="flex items-center gap-x-6">
+        <Avatar className="size-7">
+          <AvatarImage src={item?.avatar} alt={item?.user} />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <p className="text-gray-7 text-sm">{item?.user}</p>
+      </div>
+    ),
+    commit: item?.commit,
+    date: item?.date,
+    action: <Trash size={14} className="cursor-pointer" />,
+    key: `user-${item?.user?.split(" ").join("-")}`,
+  }));
+
   return (
     <Table className="px-6">
       <TableCaption className="sr-only">
@@ -66,21 +89,3 @@ interface TableDataItem {
   action: React.ReactNode;
   key: string;
 }
-
-const tableData: TableDataItem[] = Array(5)
-  .fill("")
-  .map((i) => ({
-    user: (
-      <div className="flex items-center gap-x-6">
-        <Avatar className="size-7">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        <p className="text-gray-7 text-sm">Ronald Bradley</p>
-      </div>
-    ),
-    commit: "Initial commit",
-    date: "May 6, 2018",
-    action: <Trash size={14} className="cursor-pointer" />,
-    key: `user-${i + 1}`,
-  }));

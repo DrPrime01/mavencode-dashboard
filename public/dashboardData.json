@@ -1,0 +1,72 @@
+{
+  "stats": {
+    "newTickets": {
+      "value": 43,
+      "change": "+6%",
+      "isProfit": true
+    },
+    "closedToday": {
+      "value": 17,
+      "change": "-3%",
+      "isProfit": false
+    },
+    "newReplies": {
+      "value": 7,
+      "change": "+9%",
+      "isProfit": true
+    },
+    "followers": {
+      "value": "27.3k",
+      "change": "+3%",
+      "isProfit": true
+    },
+    "dailyEarnings": {
+      "value": "$95",
+      "change": "-2%",
+      "isProfit": false
+    },
+    "products": {
+      "value": 621,
+      "change": "-1%",
+      "isProfit": false
+    }
+  },
+  "developmentActivity": [
+    {
+      "user": "Ronald Bradley",
+      "commit": "Initial commit",
+      "date": "May 6, 2018",
+      "avatar": "https://robohash.org/ronald-bradley"
+    },
+    {
+      "user": "Russell Gibson",
+      "commit": "Main structure",
+      "date": "April 22, 2018",
+      "avatar": "https://robohash.org/russell-gibson"
+    },
+    {
+      "user": "Beverly Armstrong",
+      "commit": "Left sidebar adjustments",
+      "date": "April 15, 2018",
+      "avatar": "https://robohash.org/beverly-armstrong"
+    },
+    {
+      "user": "Ronald Bradley",
+      "commit": "Initial commit",
+      "date": "May 6, 2018",
+      "avatar": "https://robohash.org/ronald-bradley"
+    },
+    {
+      "user": "Russell Gibson",
+      "commit": "Main structure",
+      "date": "April 22, 2018",
+      "avatar": "https://robohash.org/russell-gibson"
+    },
+    {
+      "user": "Beverly Armstrong",
+      "commit": "Left sidebar adjustments",
+      "date": "April 15, 2018",
+      "avatar": "https://robohash.org/beverly-armstrong"
+    }
+  ]
+}
